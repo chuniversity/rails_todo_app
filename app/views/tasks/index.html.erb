@@ -1,6 +1,6 @@
 <h1>Tasks</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Description</th>
@@ -13,7 +13,7 @@
         <td><%= task.description %></td>
         <td>
           <%= form_with(url: "/tasks/#{task.id}", method: :delete) do |form| %>
-            <%= form.submit "Delete", data: { confirm: "Are you sure?" } %>
+            <%= form.submit "Delete", data: { confirm: "Are you sure?" }, class: "btn btn-danger float-right" %>
           <% end %>
         </td>
       </tr>
@@ -24,7 +24,9 @@
 <hr>
 
 <%= form_with(url: "/tasks") do |form| %>
-  <%= form.label :description %>
-  <%= form.text_field :description, autocomplete: "off" %>
-  <%= form.submit "Create Task" %>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_field :description, autocomplete: "off", class: "form-control" %>
+  </div>
+  <%= form.submit "Create Task", class: "btn btn-primary" %>
 <% end %>
