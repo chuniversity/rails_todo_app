@@ -8,11 +8,17 @@ We are building a Todo App together!  At first we will use Rails, and later we w
 ### System dependencies
 * sqlite3, which should already be on your machine
 
+### App setup
+* `cd todo_c**`
+* `bundle`
+* `yarn`
+* `rails s`
+
 ### Database creation
 * Not needed for as long as we are using sqlite3
- 
+
 ### Database initialization
-* Coming soon
+* `rails db:drop db:create db:migrate`
 
 ### How to run the test suite
 * Coming soonish
