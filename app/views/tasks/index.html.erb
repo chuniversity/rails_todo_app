@@ -14,3 +14,11 @@
     <% end %>
   </tbody>
 </table>
+
+<hr>
+
+<%= form_with(url: "/tasks") do |form| %>
+  <%= form.label :description %>
+  <%= form.text_field :description, autocomplete: "off" %>
+  <%= form.submit "Create Task" %>
+<% end %>
