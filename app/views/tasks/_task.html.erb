@@ -1,0 +1,14 @@
+<tr class='task <%= "completed" if task.completed? %>'>
+  <td><%= task.description %></td>
+  <td>
+    <div class="btn-group float-right" role="group">
+      <%= button_to task.completed? ? "Mark Incomplete" : "Mark Complete",
+          task, method: :patch,
+          class: "btn btn-secondary" %>
+      <%= button_to "Delete",
+          task, method: :delete,
+          data: { confirm: "Are you sure?" },
+          class: "btn btn-danger ml-2" %>
+    </div>
+  </td>
+</tr>
