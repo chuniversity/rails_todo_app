@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :set_task, only: [:update, :destroy]
 
   def index
     # needs the file /app/views/tasks/index.html
@@ -15,10 +16,20 @@ class TasksController < ApplicationController
     end
   end
 
+  def update
+    @task.update(completed: !@task.completed)
+    redirect_to "/", notice: "Task successfully updated"
+  end
+
   def destroy
-    task = Task.find(params[:id]) 
-    task.destroy
+    @task.destroy
     redirect_to "/", notice: "Task successfully destroyed"
+  end
+
+  private
+
+  def set_task
+    @task = Task.find(params[:id])
   end
 
 end
