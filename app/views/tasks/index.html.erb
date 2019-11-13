@@ -9,12 +9,18 @@
   </thead>
   <tbody>
     <% @tasks.each do |task| %>
-      <tr>
+      <tr class='task <%= "completed" if task.completed? %>'>
         <td><%= task.description %></td>
         <td>
-          <%= form_with(url: "/tasks/#{task.id}", method: :delete) do |form| %>
-            <%= form.submit "Delete", data: { confirm: "Are you sure?" }, class: "btn btn-danger float-right" %>
-          <% end %>
+          <div class="btn-group float-right" role="group">
+            <%= form_with(url: "/tasks/#{task.id}", method: :patch) do |form| %>
+              <%= form.submit task.completed? ? "Mark Incomplete" : "Mark Complete",
+                  class: "btn btn-secondary" %>
+            <% end %>
+            <%= form_with(url: "/tasks/#{task.id}", method: :delete) do |form| %>
+              <%= form.submit "Delete", data: { confirm: "Are you sure?" }, class: "btn btn-danger ml-2" %>
+            <% end %>
+          </div>
         </td>
       </tr>
     <% end %>
