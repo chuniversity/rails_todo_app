@@ -7,14 +7,18 @@ class TasksController < ApplicationController
   end
 
   def create
-    Task.create(description: params[:description])
-    redirect_to "/"
+    task = Task.new(description: params[:description])
+    if task.save
+      redirect_to "/", notice: "Task successfully created"
+    else
+      redirect_to "/", alert: task.errors.full_messages.to_sentence.capitalize
+    end
   end
 
   def destroy
     task = Task.find(params[:id]) 
     task.destroy
-    redirect_to "/"
+    redirect_to "/", notice: "Task successfully destroyed"
   end
 
 end
