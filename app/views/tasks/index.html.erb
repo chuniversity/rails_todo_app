@@ -1,39 +1,8 @@
 <h1><%= (params[:status] || "all").capitalize %> Tasks</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-      <tr class='task <%= "completed" if task.completed? %>'>
-        <td><%= task.description %></td>
-        <td>
-          <div class="btn-group float-right" role="group">
-            <%= button_to task.completed? ? "Mark Incomplete" : "Mark Complete",
-                task, method: :patch,
-                class: "btn btn-secondary" %>
-            <%= button_to "Delete",
-                task, method: :delete,
-                data: { confirm: "Are you sure?" },
-                class: "btn btn-danger ml-2" %>
-          </div>
-        </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'table', tasks: @tasks %>
 
 <% unless current_page? root_url status: "completed" %>
   <hr>
-  <%= form_with url: tasks_url do |form| %>
-    <div class="form-group">
-      <%= form.label :description %>
-      <%= form.text_field :description, autocomplete: "off", autofocus: true, class: "form-control" %>
-    </div>
-    <%= form.submit "Create Task", class: "btn btn-primary" %>
-  <% end %>
+  <%= render 'form' %>
 <% end %>
