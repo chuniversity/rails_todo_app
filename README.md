@@ -6,7 +6,7 @@ We are building a Todo App together!  At first we will use Rails, and later we w
 * 2.6 or greater
 
 ### System dependencies
-* sqlite3, which should already be on your machine
+* postgresql
 
 ### App setup
 * `cd todo_c**`
@@ -15,10 +15,10 @@ We are building a Todo App together!  At first we will use Rails, and later we w
 * `rails s`
 
 ### Database creation
-* Not needed for as long as we are using sqlite3
+* `rails db:create`
 
 ### Database initialization
-* `rails db:drop db:create db:migrate`
+* `rails db:drop db:create db:migrate db:seed`
 
 ### How to run the test suite
 * Coming soonish
